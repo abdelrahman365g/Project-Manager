@@ -15,7 +15,7 @@ export default function Dashboard({ projects, setProjects }) {
 
   return (
     <div className="container mt-5">
-      <div className="d-flex justify-content-between align-items-center mb-4">
+      <div className="d-flex justify-content-between align-items-center mb-4 bg-white rounded-4 shadow-sm px-4 py-3">
         <h1 className="fw-bold text-primary">
           <i className="fa-solid fa-layer-group me-2"></i> Projects
         </h1>
@@ -31,9 +31,11 @@ export default function Dashboard({ projects, setProjects }) {
           No projects yet. Start by adding one!
         </p>
       ) : (
-        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 gap-4">
+        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
           {projects.map((p) => (
-            <ProjectCard key={p.id} project={p} onDelete={deleteProject} />
+            <div className="col" key={p.id}>
+              <ProjectCard project={p} onDelete={deleteProject} />
+            </div>
           ))}
         </div>
       )}

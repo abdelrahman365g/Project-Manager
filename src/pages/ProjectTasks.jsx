@@ -65,12 +65,12 @@ export default function ProjectTasks({ projects, setProjects }) {
 
   return (
     <div className="container mt-4">
-      <div className="d-flex justify-content-between align-items-center mb-4 p-3 shadow-sm rounded bg-white">
+      <div className="d-flex justify-content-between align-items-center mb-4 p-3 shadow-sm rounded-4 bg-white">
         <h2 className="fw-bold mb-0">
           <i className="fa-solid fa-layer-group me-2 text-primary"></i>
           {project.title}
         </h2>
-        <div className="d-flex justify-content-between align-items-center mb-4 gap-3">
+        <div className="d-flex justify-content-between align-items-center gap-3">
           <Link
             className="btn btn-primary shadow"
             to="/add-task"
@@ -95,7 +95,7 @@ export default function ProjectTasks({ projects, setProjects }) {
                 <div className={`rounded-circle me-2`} style={{ width: '10px', height: '10px', backgroundColor: 
                   status === "To Do" ? "#ffc107" : status === "In Progress" ? "#0d6efd" : "#198754" 
                 }}></div>
-                <h5 className="m-0 fw-bold text-secondary uppercase small" style={{ letterSpacing: '1px' }}>{status}</h5>
+                <h5 className="m-0 fw-bold text-secondary uppercase" style={{ letterSpacing: '1px' }}>{status}</h5>
               </div>
               
               <div className="task-list">
