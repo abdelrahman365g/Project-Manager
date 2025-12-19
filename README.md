@@ -27,7 +27,7 @@ A web application to manage projects and tasks, built with **React**, **React Ro
 ## How to Run
 
 1. **Clone the repository**:
-   ```bash
+   ```
    git clone https://github.com/abdelrahman365g/Project-Manager/
    cd Project-Manager
 2. **Install the dependencies** :
