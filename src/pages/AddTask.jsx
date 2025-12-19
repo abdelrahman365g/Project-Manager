@@ -7,10 +7,14 @@ export default function AddTask({ projects, setProjects }) {
 
   const isEdit = location.state?.task;
   const editProjectId = location.state?.projectId;
+  const preselectedProjectId = location.state?.projectId;
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [projectId, setProjectId] = useState(projects[0]?.id || "");
+  const [projectId, setProjectId] = useState(
+    preselectedProjectId || projects[0]?.id || ""
+  );
+
   const [status, setStatus] = useState("To Do");
 
   useEffect(() => {
@@ -58,13 +62,14 @@ export default function AddTask({ projects, setProjects }) {
   return (
     <div className="container mt-3">
       <div className="d-flex justify-content-between align-items-center mb-3">
-        <span className="fs-4 fw-bold">{isEdit ? "Edit Task" : "Add Task"}</span>
+        <span className="fs-4 fw-bold">
+          {isEdit ? "Edit Task" : "Add Task"}
+        </span>
         <button
           className="btn btn-link text-decoration-none"
           onClick={() => navigate(-1)}
-          type="button"
         >
-          ← Back
+          <i className="fa-solid fa-arrow-left me-1"></i> Back
         </button>
       </div>
 
@@ -104,7 +109,8 @@ export default function AddTask({ projects, setProjects }) {
           <option>Done</option>
         </select>
 
-        <button className="btn btn-success mt-4 mx-auto d-block">
+        <button className="btn btn-success btn-lg shadow d-block mx-auto">
+          <i className="fa-solid fa-plus me-2"></i>
           {isEdit ? "Update Task" : "Add Task"}
         </button>
       </form>

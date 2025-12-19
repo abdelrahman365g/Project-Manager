@@ -50,9 +50,8 @@ export default function AddProject({ projects, setProjects }) {
         <button
           className="btn btn-link text-decoration-none"
           onClick={() => navigate(-1)}
-          type="button"
         >
-          ← Back
+          <i className="fa-solid fa-arrow-left me-1"></i> Back
         </button>
       </div>
 
@@ -69,7 +68,9 @@ export default function AddProject({ projects, setProjects }) {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-        <button className="btn btn-success mt-4 mx-auto d-block">
+
+        <button className="btn btn-success shadow  d-block mx-auto">
+          <i className="fa-solid fa-plus me-2"></i>
           {isEdit ? "Update Project" : "Add Project"}
         </button>
       </form>

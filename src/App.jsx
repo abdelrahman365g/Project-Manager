@@ -31,8 +31,33 @@ function App() {
   });
 
   useEffect(() => {
-    localStorage.setItem("projects", JSON.stringify(projects));
-  }, [projects]);
+    const saved = localStorage.getItem("projects");
+    if (saved) return;
+
+    fetch("https://dummyjson.com/todos?limit=9")
+      .then((res) => res.json())
+      .then((data) => {
+        const apiProjects = [
+          {
+            id: 100,
+            title: "API Project",
+            description: "Loaded from DummyJSON API",
+            tasks: data.todos.map((t) => ({
+              id: t.id,
+              title: t.todo,
+              description: "Imported task",
+              status: t.completed ? "Done" : "To Do",
+            })),
+          },
+        ];
+
+        setProjects(apiProjects);
+        localStorage.setItem("projects", JSON.stringify(apiProjects));
+      })
+      .catch(() => {
+        console.log("API failed, using local data");
+      });
+  }, []);
 
   return (
     <>
@@ -52,6 +77,11 @@ function App() {
           path="/add-project"
           element={<AddProject projects={projects} setProjects={setProjects} />}
         />
+        <Route
+          path="/add-project/:id"
+          element={<AddProject projects={projects} setProjects={setProjects} />}
+        />
+
         <Route
           path="/add-task"
           element={<AddTask projects={projects} setProjects={setProjects} />}
