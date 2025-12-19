@@ -7,6 +7,8 @@ import ProjectTasks from "./pages/ProjectTasks";
 import AddProject from "./pages/AddProject";
 import AddTask from "./pages/AddTask";
 import Navbar from "./components/Navbar";
+import "./index.css";
+import "./App.css";
 
 function App() {
   const [projects, setProjects] = useState(() => {
@@ -62,6 +64,7 @@ function App() {
   return (
     <>
       <Navbar />
+      <div className="main-container">
       <Routes>
         <Route
           path="/"
@@ -87,6 +90,7 @@ function App() {
           element={<AddTask projects={projects} setProjects={setProjects} />}
         />
       </Routes>
+      </div>
     </>
   );
 }
