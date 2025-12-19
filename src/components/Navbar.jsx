@@ -1,17 +1,29 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
-export default function Navbar() {
+export default function Navbar({ user }) {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    console.log("Logging out...");
+    navigate('/');
+  };
+
   return (
-    <nav className=" border-bottom shadow-sm">
-      <div className="container d-flex justify-content-between my-4">
-        <Link className="header-brand fs-4 fw-bold text-decoration-none" to="/">Dashboard</Link>
-        <div className="d-flex gap-3 me-3">
-          <Link className="btn btn-primary" to="/add-project">
-            Add Project
-          </Link>
-          <Link className="btn btn-primary" to="/add-task">
-            Add Task
-          </Link>
+    <nav className="navbar navbar-expand-lg navbar-light bg-white border-bottom py-3 mb-4 shadow-sm">
+      <div className="container">
+        <span className="navbar-brand fw-bold text-primary">Project Manager</span>
+        
+        <div className="d-flex align-items-center">
+          {user ? (
+            <>
+              <span className="me-3 text-secondary">Welcome, {user.firstName}!</span>
+              <button className="btn btn-outline-danger btn-sm px-3" onClick={handleLogout}>
+                Logout
+              </button>
+            </>
+          ) : (
+            <span className="text-secondary">Guest Mode</span>
+          )}
         </div>
       </div>
     </nav>
