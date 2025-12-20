@@ -1,8 +1,6 @@
-import { Link, useNavigate } from "react-router-dom";
 import ProjectCard from "../components/ProjectCard";
 
 export default function Dashboard({ projects, setProjects }) {
-  const navigate = useNavigate();
 
   const deleteProject = (projectId) => {
     if (!window.confirm("Are you sure you want to delete this project?"))

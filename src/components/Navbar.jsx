@@ -1,13 +1,7 @@
-import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-export default function Navbar({ user }) {
-  const navigate = useNavigate();
+export default function Navbar() {
 
-  const handleLogout = () => {
-    console.log("Logging out...");
-    navigate('/');
-  };
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light shadow-sm border-bottom py-3">

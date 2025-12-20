@@ -1,10 +1,18 @@
-import { useNavigate } from "react-router-dom";
-
-export default function TaskCard({ task, projectId, onDelete, onMoveLeft, onMoveRight, onEdit }) {
-  const navigate = useNavigate();
+export default function TaskCard({
+  task,
+  onDelete,
+  onMoveLeft,
+  onMoveRight,
+  onEdit,
+  onDragStart,
+}) {
 
   return (
-    <div className="card p-3 mb-3">
+    <div
+      className="card p-3 mb-3"
+      draggable
+      onDragStart={() => onDragStart(task.id)}
+    >
       <h5>{task.title}</h5>
       <p className="text-muted small">{task.description}</p>
 
@@ -20,12 +28,18 @@ export default function TaskCard({ task, projectId, onDelete, onMoveLeft, onMove
 
         <div className="d-flex gap-2">
           {(task.status === "In Progress" || task.status === "Done") && (
-            <button className="btn btn-outline-secondary btn-sm" onClick={onMoveLeft}>
+            <button
+              className="btn btn-outline-secondary btn-sm"
+              onClick={onMoveLeft}
+            >
               <i className="fa-solid fa-arrow-left"></i>
             </button>
           )}
           {(task.status === "In Progress" || task.status === "To Do") && (
-            <button className="btn btn-outline-secondary btn-sm" onClick={onMoveRight}>
+            <button
+              className="btn btn-outline-secondary btn-sm"
+              onClick={onMoveRight}
+            >
               <i className="fa-solid fa-arrow-right"></i>
             </button>
           )}
